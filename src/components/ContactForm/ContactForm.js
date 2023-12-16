@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'; // Dodaj ten import
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addContact } from '../../redux/contactsSlice';
@@ -8,8 +8,7 @@ import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({ name: '', number: '' }); // Dodaj state dla name i number
-
+  const [formData, setFormData] = useState({ name: '', number: '' });
   const handleSubmit = e => {
     e.preventDefault();
     const newContact = {
@@ -40,7 +39,7 @@ const ContactForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             placeholder="Enter name"
             required
-            value={formData.name} // Użyj formData.name zamiast name
+            value={formData.name}
             onChange={handleChange}
           />
         </label>
@@ -55,7 +54,7 @@ const ContactForm = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             placeholder="Enter phone number"
             required
-            value={formData.number} // Użyj formData.number zamiast number
+            value={formData.number}
             onChange={handleChange}
           />
         </label>
