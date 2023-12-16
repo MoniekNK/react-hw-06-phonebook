@@ -16,7 +16,7 @@
   width: 80px;
   background-color: #f3f6f9e0;
   border: none;
-  color: #3e454c34;
+  color: #1fafc934;
   padding: 10px;
   text-align: center;
   transition: all 0.5s;
@@ -24,7 +24,7 @@
 }
 
 .contactsBtn:hover {
-  background-color: #315fba;
+  background-color: #c3ccde;
   color: #fff;
 }
 
