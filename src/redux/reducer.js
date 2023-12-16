@@ -1,14 +1,26 @@
-import { combineReducers } from 'redux';
-import contactsReducer from './redux/contactsSlice';
+import { createReducer } from '@reduxjs/toolkit';
+import { addNewContact, deleteContact, setFilter } from './action';
 
-const reducer = combineReducers({
-  contacts: contactsReducer,
-  filter: (state = '', action) => {
-    if (action.type === 'contacts/setFilter') {
-      return action.payload;
-    }
-    return state;
-  },
+const storedContacts = localStorage.getItem('contacts');
+const contactsInitialState = storedContacts ? JSON.parse(storedContacts) : [];
+const filterInitialState = '';
+
+export const contactsReducer = createReducer(contactsInitialState, builder => {
+  builder
+    .addCase(addNewContact, (state, action) => {
+      const newState = [...state, action.payload];
+      localStorage.setItem('contacts', JSON.stringify(newState));
+      return newState;
+    })
+    .addCase(deleteContact, (state, action) => {
+      const newState = state.filter(contact => contact.id !== action.payload);
+      localStorage.setItem('contacts', JSON.stringify(newState));
+      return newState;
+    });
 });
 
-export default reducer;
+export const filterReducer = createReducer(filterInitialState, builder => {
+  builder.addCase(setFilter, (_, action) => {
+    return action.payload;
+  });
+});

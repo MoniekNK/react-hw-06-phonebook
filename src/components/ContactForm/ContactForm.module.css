@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin: 15px;
 }
 
 .inputForm {
@@ -26,6 +25,11 @@
   border: 1px solid #e4e9f0;
   border-radius: 10px;
   padding: 10px 10px;
+}
+
+.inputNumber:focus,
+.inputName:focus {
+  outline: 2px solid #e80dc0;
 }
 
 .inputForm:focus {
