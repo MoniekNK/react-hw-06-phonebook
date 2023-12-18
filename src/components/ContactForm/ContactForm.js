@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewContact } from '../../redux/action';
-import { getContacts } from '../../redux/filters';
+import { selectContacts } from '../../redux/selectors';
 import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const addContact = e => {
     e.preventDefault();
